@@ -1,0 +1,148 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="./mystyles.css" />
+		<title>Статус Вендинг машини</title>
+		<script scr="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="myscript.js"></script>
+	</head>
+
+	<body>
+		<div class="container" id="container">
+			<div class="row" id="machineRow">
+			
+			</div>
+			<div class="details" id="modal">
+				<div class="modal-content">
+					<div class="row" style="margin-bottom:10px;">
+					    <div class="col-4">
+					        <img id="mImage" class="miniImage">
+					    </div>
+					    <div class="col-4">
+					        <button id="reset">Reset</button>
+					    </div>
+					    <div class="col-4">
+					        <span class="close">&times;</span>
+					        </div>
+						<img id="mImage">
+					</div>
+					<p id="mNumber"></p>
+					<p id="mCNumber"></p>
+					<p id="mSum"></p>
+					<p id="mBanknotes"></p>
+					<p id="mStatus"></p>
+					<p id="mDor"></p>
+					<p id="mSell"></p>
+					<p id="mSellection"></p>
+					<p id="mPrice"></p>
+					<p id="mStatistic"></p>
+					<p id="mFuvas"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<p class="footertext" id="machineCount"></p>
+					<p class="footertext" id="error"></p>
+				</div>
+				<div class="col-6">
+					<p class="footertext" id="good"></p>
+					<p class="footertext" id="unknowns"></p>
+				</div>
+			</div>
+		</div>
+		<script>
+		    var done = false;
+			var count = 0;
+			var err = 0;
+			var gdd = 0;
+			var unkwn = 0;
+			var list = document.getElementById('machineRow');
+			var errList = document.createElement('div');
+			errList.setAttribute('id', 'errorList');
+			var okList = document.createElement('div');
+			okList.setAttribute('id', 'okList');
+			var unknownList = document.createElement('div');
+			unknownList.setAttribute('id', 'unknownList');
+			function itterate(varriable){
+				varriable.forEach(function(element) {
+				console.log(element.machineNumber + " " + element.name);
+				    var region = element.region;
+					var status = element.status;
+					var machineNumber = element.machineNumber;
+					var onClickData = 'showDetails(\'' + machineNumber + '\')';
+					var divElement = document.createElement('div');
+					var imageText = document.createElement('div');
+					imageText.classList.add('centered');
+					imageText.innerHTML = parseInt(machineNumber);
+					var imageButton = document.createElement('img');
+					imageButton.setAttribute('id', machineNumber);
+					imageButton.setAttribute('onclick', onClickData);
+					imageText.setAttribute('id', machineNumber);
+					imageText.setAttribute('onclick', onClickData);
+					divElement.setAttribute('id', machineNumber);
+					divElement.setAttribute('onclick', onClickData);
+					imageButton.classList.add('innerimage');
+					divElement.classList.add('col-1');
+					divElement.appendChild(imageButton);
+					divElement.appendChild(imageText);
+					if (region == '01' && status != 'good' && status != 'unknown'){
+						imageButton.src = 'button_round_red.png';
+						errList.appendChild(divElement);
+						err += 1;
+						count += 1;
+					}
+					if (region == '01' && status == 'good') {
+						imageButton.src = 'button_round_green.png';
+						okList.appendChild(divElement);
+						gdd += 1;
+						count += 1;
+					}
+					if (region == '01' && status == 'unknown'){
+						imageButton.src = 'button_round_yellow.png';
+						unknownList.appendChild(divElement);
+						unkwn += 1;
+						count += 1;
+					}
+				
+				});
+				var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML;
+				list.innerHTML = inHtml;
+				var unknownsP = document.getElementById('error');
+				unknownsP.innerHTML = 'Машини в грешка: ' + err;
+				var unknownsP = document.getElementById('good');
+				unknownsP.innerHTML = 'Машини без грешка: ' + gdd;
+				var unknownsP = document.getElementById('unknowns');
+				unknownsP.innerHTML = 'Машини без платка: ' + unkwn;
+				var counter = document.getElementById('machineCount');
+				counter.innerHTML = 'Брой Машини: ' + count;
+			};
+			var request = new XMLHttpRequest();
+			var jsonResponse;
+			request.open("GET", "http://46.10.241.187:4040/api/machines", true);
+			request.responseType = 'json';
+			request.onload = function() {
+				jsonResponse = request.response;
+				itterate(jsonResponse);
+			};
+			request.send();
+				
+			var span = document.getElementsByClassName("close")[0];
+			span.onclick = function() {
+				document.getElementById("modal").style.display = "none";
+			}
+			window.onclick = function(event) {
+				if(event.target == document.getElementById("modal")){
+					document.getElementById("modal").style.display = "none";
+				}
+			}
+		</script>
+	</body>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</html>
+
