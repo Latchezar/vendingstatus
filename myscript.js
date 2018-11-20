@@ -193,7 +193,7 @@ function loadSearch(searchText){
 	};
 	var request = new XMLHttpRequest();
 	var jsonResponse;
-	var serverUrl = "http://46.10.241.187:4040/api/search/" + searchText;
+	var serverUrl = "http://46.10.241.187:4040/api/machines/search/" + searchText;
 	request.open("GET", serverUrl, true);
 	request.responseType = 'json';
 	request.onload = function() {
