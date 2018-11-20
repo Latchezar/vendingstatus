@@ -48,3 +48,79 @@ function showDetails(numberOfString) {
 	}
 	getMachine.send();
 }
+
+function loadAll(){
+	var done = false;
+	var count = 0;
+	var err = 0;
+	var gdd = 0;
+	var unkwn = 0;
+	var list = document.getElementById('machineRow');
+	var errList = document.createElement('div');
+	errList.setAttribute('id', 'errorList');
+	var okList = document.createElement('div');
+	okList.setAttribute('id', 'okList');
+	var unknownList = document.createElement('div');
+	unknownList.setAttribute('id', 'unknownList');
+	function itterate(varriable){
+		varriable.forEach(function(element) {
+		console.log(element.machineNumber + " " + element.name);
+			var status = element.status;
+			var machineNumber = element.machineNumber;
+			var onClickData = 'showDetails(\'' + machineNumber + '\')';
+			var divElement = document.createElement('div');
+			var imageText = document.createElement('div');
+			imageText.classList.add('centered');
+			imageText.innerHTML = parseInt(machineNumber);
+			var imageButton = document.createElement('img');
+			imageButton.setAttribute('id', machineNumber);
+			imageButton.setAttribute('onclick', onClickData);
+			imageText.setAttribute('id', machineNumber);
+			imageText.setAttribute('onclick', onClickData);
+			divElement.setAttribute('id', machineNumber);
+			divElement.setAttribute('onclick', onClickData);
+			imageButton.classList.add('innerimage');
+			divElement.classList.add('col-1');
+			divElement.appendChild(imageButton);
+			divElement.appendChild(imageText);
+			if (status != 'good' && status != 'unknown'){
+				imageButton.src = 'button_round_red.png';
+				errList.appendChild(divElement);
+				err += 1;
+				count += 1;
+			}
+			if (status == 'good') {
+				imageButton.src = 'button_round_green.png';
+				okList.appendChild(divElement);
+				gdd += 1;
+				count += 1;
+			}
+			if (status == 'unknown'){
+				imageButton.src = 'button_round_yellow.png';
+				unknownList.appendChild(divElement);
+				unkwn += 1;
+				count += 1;
+			}
+		
+		});
+		var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML;
+		list.innerHTML = inHtml;
+		var unknownsP = document.getElementById('error');
+		unknownsP.innerHTML = 'Машини в грешка: ' + err;
+		var unknownsP = document.getElementById('good');
+		unknownsP.innerHTML = 'Машини без грешка: ' + gdd;
+		var unknownsP = document.getElementById('unknowns');
+		unknownsP.innerHTML = 'Машини без платка: ' + unkwn;
+		var counter = document.getElementById('machineCount');
+		counter.innerHTML = 'Брой Машини: ' + count;
+	};
+	var request = new XMLHttpRequest();
+	var jsonResponse;
+	request.open("GET", "http://46.10.241.187:4040/api/machines", true);
+	request.responseType = 'json';
+	request.onload = function() {
+		jsonResponse = request.response;
+		itterate(jsonResponse);
+	};
+	request.send();
+}
