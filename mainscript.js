@@ -55,6 +55,7 @@ function loadAll(){
 	var err = 0;
 	var gdd = 0;
 	var unkwn = 0;
+	var prpl = 0;
 	var list = document.getElementById('machineRow');
 	var errList = document.createElement('div');
 	errList.setAttribute('id', 'errorList');
@@ -62,6 +63,8 @@ function loadAll(){
 	okList.setAttribute('id', 'okList');
 	var unknownList = document.createElement('div');
 	unknownList.setAttribute('id', 'unknownList');
+	var purpleList = document.createElement('div');
+	purpleList.setAttribute('id', 'purpleList');
 	function itterate(varriable){
 		varriable.forEach(function(element) {
 		console.log(element.machineNumber + " " + element.name);
@@ -83,7 +86,7 @@ function loadAll(){
 			divElement.classList.add('col-1');
 			divElement.appendChild(imageButton);
 			divElement.appendChild(imageText);
-			if (status != 'good' && status != 'unknown'){
+			if (status != 'good' && status != 'unknown' && status != 'purple'){
 				imageButton.src = 'button_round_red.png';
 				errList.appendChild(divElement);
 				err += 1;
@@ -101,9 +104,15 @@ function loadAll(){
 				unkwn += 1;
 				count += 1;
 			}
+			if (status == 'purple'){
+				imageButton.src = 'button_round_purple.png';
+				purpleList.appendChild(divElement);
+				prpl += 1;
+				count += 1;
+			}
 		
 		});
-		var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML;
+		var inHtml = errList.innerHTML + purpleList.innerHTML + okList.innerHTML + unknownList.innerHTML;
 		list.innerHTML = inHtml;
 		var unknownsP = document.getElementById('error');
 		unknownsP.innerHTML = 'Машини в грешка: ' + err;
