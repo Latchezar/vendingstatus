@@ -210,7 +210,7 @@ function clearButtons(){
 
 function searchClick(){
 	var searchText = document.getElementById("search-box").value;
-	document.getElementById("search-box").setAttribute("value", "");
+	document.getElementById("search-box").value = "";
 	clearButtons();
 	loadSearch(searchText);
 }
