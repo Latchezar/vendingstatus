@@ -25,15 +25,11 @@
 			</nav>
 			<div class="row navigation-line">
 				<div class="col-12">
-					<div class="d-inline">
-						<form class="form-inline my-2 my-lg-0" onsubmit="event.preventDefault(); searchClick();">
-							<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box">
-							<button class="btn btn-outline-success my-2 my-sm-0" id="search-button" type="submit">Search</button>
-						</form>
-					</div>
-					<div class="d-inline">
-						<button class="btn btn-outline-success my-2 my-sm-0" id="loadAll" onclick="loadAll();">Load All</button>
-					</div>
+					<form class="form-inline my-2 my-lg-0 d-inline" onsubmit="event.preventDefault(); searchClick();">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box">
+						<button class="btn btn-outline-success my-2 my-sm-0" id="search-button" type="submit">Search</button>
+					</form>
+					<button class="btn btn-outline-success my-2 my-sm-0 d-inline" id="loadAll" onclick="loadAll();">Load All</button>
 				</div>
 			</div>
 			<div class="row" id="machineRow">
