@@ -27,7 +27,7 @@
 				<div class="col-12">
 					<form class="form-inline my-2 my-lg-0">
 						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box">
-						<button class="btn btn-outline-success my-2 my-sm-0" id="search-button" onclick="searchClick()">Search</button>
+						<button class="btn btn-outline-success my-2 my-sm-0" id="search-button">Search</button>
 					</form>
 				</div>
 			</div>
@@ -73,7 +73,8 @@
 			</div>
 		</div>
 		<script>
-		    loadAll();	
+			loadAll();
+			document.getElementById("search-button").addEventListener("click", searchClick());
 			var span = document.getElementsByClassName("close")[0];
 			span.onclick = function() {
 				document.getElementById("modal").style.display = "none";
