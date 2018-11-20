@@ -1,6 +1,6 @@
 function showDetails(numberOfString) {
 	var machine;
-	var url = "http://46.10.241.187:4040/api/machines/" + numberOfString;
+	var url = "https://46.10.241.187:4040/api/machines/" + numberOfString;
 	var getMachine = new XMLHttpRequest();
 	getMachine.open("GET", url, true);
 	getMachine.responseType = 'json';
@@ -116,7 +116,7 @@ function loadAll(){
 	};
 	var request = new XMLHttpRequest();
 	var jsonResponse;
-	request.open("GET", "http://46.10.241.187:4040/api/machines", true);
+	request.open("GET", "https://46.10.241.187:4040/api/machines", true);
 	request.responseType = 'json';
 	request.onload = function() {
 		jsonResponse = request.response;
@@ -193,7 +193,7 @@ function loadSearch(searchText){
 	};
 	var request = new XMLHttpRequest();
 	var jsonResponse;
-	var serverUrl = "http://46.10.241.187:4040/api/machines/search/" + searchText;
+	var serverUrl = "https://46.10.241.187:4040/api/machines/search/" + searchText;
 	request.open("GET", serverUrl, true);
 	request.responseType = 'json';
 	request.onload = function() {
