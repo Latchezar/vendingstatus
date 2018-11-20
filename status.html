@@ -25,9 +25,9 @@
 			</nav>
 			<div class="row navigation-line">
 				<div class="col-12">
-					<form class="form-inline my-2 my-lg-0">
+					<form class="form-inline my-2 my-lg-0" onsubmit="event.preventDefault(); searchClick();">
 						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box">
-						<button class="btn btn-outline-success my-2 my-sm-0" id="search-button">Search</button>
+						<button class="btn btn-outline-success my-2 my-sm-0" id="search-button" type="submit">Search</button>
 					</form>
 				</div>
 			</div>
@@ -74,7 +74,6 @@
 		</div>
 		<script>
 			loadAll();
-			document.getElementById("search-button").addEventListener("click", searchClick());
 			var span = document.getElementsByClassName("close")[0];
 			span.onclick = function() {
 				document.getElementById("modal").style.display = "none";
