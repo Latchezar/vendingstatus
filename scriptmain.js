@@ -23,19 +23,19 @@ function showDetails(numberOfString) {
     	let mPrice = 'Цена: ' + machine.dcen;
     	let mStatistic = 'Отчет: ' + machine.drep;
     	let mFuvas = 'Фувас: ' + machine.fdin + '/' + machine.fmin;
-    	document.getElementById("mNumber").innerHTML = mNumber;
-    	document.getElementById("mCNumber").innerHTML = mCNumber;
-    	document.getElementById("mSum").innerHTML = mSum;
-    	document.getElementById("mBanknotes").innerHTML = mBanknotes;
-    	document.getElementById("mStatus").innerHTML = mStatus;
-    	document.getElementById("mDor").innerHTML = mDor;
-    	document.getElementById("mSell").innerHTML = mSell;
-    	document.getElementById("mSellection").innerHTML = mSellection;
-    	document.getElementById("mPrice").innerHTML = mPrice;
-    	document.getElementById("mStatistic").innerHTML = mStatistic;
-    	document.getElementById("mFuvas").innerHTML = mFuvas;
-    	document.getElementById("modal").style.display = "block";
-    	var mImage = document.getElementById('mImage');
+    	$("mNumber").innerHTML = mNumber;
+    	$("mCNumber").innerHTML = mCNumber;
+    	$("mSum").innerHTML = mSum;
+    	$("mBanknotes").innerHTML = mBanknotes;
+    	$("mStatus").innerHTML = mStatus;
+    	$("mDor").innerHTML = mDor;
+    	$("mSell").innerHTML = mSell;
+    	$("mSellection").innerHTML = mSellection;
+    	$("mPrice").innerHTML = mPrice;
+    	$("mStatistic").innerHTML = mStatistic;
+    	$("mFuvas").innerHTML = mFuvas;
+    	$("modal").style.display = "block";
+    	var mImage = $('mImage');
     	if (machineStatus == 'good'){
     		mImage.setAttribute('src', './button_round_green.png');
     	} else {
@@ -56,7 +56,7 @@ function itterate(varriable){
 	var gdd = 0;
 	var unkwn = 0;
 	var prpl = 0;
-	var list = document.getElementById('machineRow');
+	var list = $('machineRow');
 	var errList = document.createElement('div');
 	errList.setAttribute('id', 'errorList');
 	var okList = document.createElement('div');
@@ -113,13 +113,13 @@ function itterate(varriable){
 	});
 	var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML + purpleList.innerHTML;
 	list.innerHTML = inHtml;
-	var unknownsP = document.getElementById('error');
+	var unknownsP = $('error');
 	unknownsP.innerHTML = 'Машини в грешка: ' + err;
-	var unknownsP = document.getElementById('good');
+	var unknownsP = $('good');
 	unknownsP.innerHTML = 'Машини без грешка: ' + gdd;
-	var unknownsP = document.getElementById('unknowns');
+	var unknownsP = $('unknowns');
 	unknownsP.innerHTML = 'Машини без платка: ' + unkwn;
-	var counter = document.getElementById('machineCount');
+	var counter = $('machineCount');
 	counter.innerHTML = 'Брой Машини: ' + count;
 };
 
@@ -158,13 +158,13 @@ function loadSearch(searchText){
 }
 
 function clearButtons(){
-	var list = document.getElementById('machineRow');
+	var list = $('machineRow');
 	list.innerHTML = "";
 }
 
 function searchClick(){
-	var searchText = document.getElementById("search-box").value;
-	document.getElementById("search-box").value = "";
+	var searchText = $("search-box").value;
+	$("search-box").value = "";
 	clearButtons();
 	loadSearch(searchText);
 }
