@@ -37,12 +37,12 @@ function showDetails(numberOfString) {
     	$("#modal").css("display", "block");
     	var mImage = $('#mImage');
     	if (machineStatus == 'good'){
-    		mImage.setAttribute('src', './button_round_green.png');
+    		mImage.attr('src', './button_round_green.png');
     	} else {
     		if (machineStatus == 'unknown'){
-    			mImage.setAttribute('src', './button_round_yellow.png');
+    			mImage.attr('src', './button_round_yellow.png');
     		} else {
-    			mImage.setAttribute('src', './button_round_red.png');
+    			mImage.attr('src', './button_round_red.png');
     		}
     	}
 	}
