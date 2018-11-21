@@ -23,19 +23,19 @@ function showDetails(numberOfString) {
     	let mPrice = 'Цена: ' + machine.dcen;
     	let mStatistic = 'Отчет: ' + machine.drep;
     	let mFuvas = 'Фувас: ' + machine.fdin + '/' + machine.fmin;
-    	$("mNumber").innerHTML = mNumber;
-    	$("mCNumber").innerHTML = mCNumber;
-    	$("mSum").innerHTML = mSum;
-    	$("mBanknotes").innerHTML = mBanknotes;
-    	$("mStatus").innerHTML = mStatus;
-    	$("mDor").innerHTML = mDor;
-    	$("mSell").innerHTML = mSell;
-    	$("mSellection").innerHTML = mSellection;
-    	$("mPrice").innerHTML = mPrice;
-    	$("mStatistic").innerHTML = mStatistic;
-    	$("mFuvas").innerHTML = mFuvas;
-    	$("modal").style.display = "block";
-    	var mImage = $('mImage');
+    	$("#mNumber").innerHTML = mNumber;
+    	$("#mCNumber").innerHTML = mCNumber;
+    	$("#mSum").innerHTML = mSum;
+    	$("#mBanknotes").innerHTML = mBanknotes;
+    	$("#mStatus").innerHTML = mStatus;
+    	$("#mDor").innerHTML = mDor;
+    	$("#mSell").innerHTML = mSell;
+    	$("#mSellection").innerHTML = mSellection;
+    	$("#mPrice").innerHTML = mPrice;
+    	$("#mStatistic").innerHTML = mStatistic;
+    	$("#mFuvas").innerHTML = mFuvas;
+    	$("#modal").style.display = "block";
+    	var mImage = $('#mImage');
     	if (machineStatus == 'good'){
     		mImage.setAttribute('src', './button_round_green.png');
     	} else {
@@ -56,7 +56,7 @@ function itterate(varriable){
 	var gdd = 0;
 	var unkwn = 0;
 	var prpl = 0;
-	var list = $('machineRow');
+	var list = $('#machineRow');
 	var errList = document.createElement('div');
 	errList.setAttribute('id', 'errorList');
 	var okList = document.createElement('div');
@@ -113,13 +113,13 @@ function itterate(varriable){
 	});
 	var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML + purpleList.innerHTML;
 	list.innerHTML = inHtml;
-	var unknownsP = $('error');
+	var unknownsP = $('#error');
 	unknownsP.innerHTML = 'Машини в грешка: ' + err;
-	var unknownsP = $('good');
+	var unknownsP = $('#good');
 	unknownsP.innerHTML = 'Машини без грешка: ' + gdd;
-	var unknownsP = $('unknowns');
+	var unknownsP = $('#unknowns');
 	unknownsP.innerHTML = 'Машини без платка: ' + unkwn;
-	var counter = $('machineCount');
+	var counter = $('#machineCount');
 	counter.innerHTML = 'Брой Машини: ' + count;
 };
 
@@ -158,13 +158,13 @@ function loadSearch(searchText){
 }
 
 function clearButtons(){
-	var list = $('machineRow');
+	var list = $('#machineRow');
 	list.innerHTML = "";
 }
 
 function searchClick(){
-	var searchText = $("search-box").value;
-	$("search-box").value = "";
+	var searchText = $("#search-box").value;
+	$("#search-box").value = "";
 	clearButtons();
 	loadSearch(searchText);
 }
