@@ -126,6 +126,7 @@ function itterate(varriable){
 function loadAll(){
 	var url = "http://46.10.241.187:4040/api/machines";
 	$.get(url, function(data, status){
+		console.log(status);
 		itterate(data);
 	});
 	// var request = new XMLHttpRequest();
@@ -141,16 +142,21 @@ function loadAll(){
 
 
 function loadSearch(searchText){
-	var request = new XMLHttpRequest();
-	var jsonResponse;
-	var serverUrl = "http://46.10.241.187:4040/api/machines/search/" + searchText;
-	request.open("GET", serverUrl, true);
-	request.responseType = 'json';
-	request.onload = function() {
-		jsonResponse = request.response;
-		itterate(jsonResponse);
-	};
-	request.send();
+	var url = "http://46.10.241.187:4040/api/machines/search/" + searchText;
+	$.get(url, function(data, status){
+		console.log(status);
+		itterate(data);
+	});
+	// var request = new XMLHttpRequest();
+	// var jsonResponse;
+	// var serverUrl = "http://46.10.241.187:4040/api/machines/search/" + searchText;
+	// request.open("GET", serverUrl, true);
+	// request.responseType = 'json';
+	// request.onload = function() {
+	// 	jsonResponse = request.response;
+	// 	itterate(jsonResponse);
+	// };
+	// request.send();
 }
 
 function clearButtons(){
