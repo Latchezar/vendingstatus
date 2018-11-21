@@ -125,8 +125,7 @@ function itterate(varriable){
 
 function loadAll(){
 	var url = "http://46.10.241.187:4040/api/machines";
-	jQuery.get(url, function(data, status){
-		console.log(status);
+	var x = jQuery.get(url, function(data){
 		itterate(data);
 	});
 	// var request = new XMLHttpRequest();
@@ -143,8 +142,7 @@ function loadAll(){
 
 function loadSearch(searchText){
 	var url = "http://46.10.241.187:4040/api/machines/search/" + searchText;
-	jQuery.get(url, function(data, status){
-		console.log(status);
+	var x = jQuery.get(url, function(data){
 		itterate(data);
 	});
 	// var request = new XMLHttpRequest();
