@@ -111,7 +111,7 @@ function itterate(varriable){
 		}
 	
 	});
-	var inHtml = errList.innerHTML + purpleList.innerHTML + okList.innerHTML + unknownList.innerHTML;
+	var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML + purpleList.innerHTML;
 	list.innerHTML = inHtml;
 	var unknownsP = document.getElementById('error');
 	unknownsP.innerHTML = 'Машини в грешка: ' + err;
