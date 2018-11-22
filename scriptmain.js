@@ -91,7 +91,7 @@ function itterate(varriable){
 		divElement.classList.add('col-1');
 		divElement.appendChild(imageButton);
 		divElement.appendChild(imageText);
-		if (status != 'good' && status != 'unknown' && status != 'purple'){
+		if (status != 'good' && status != 'unknown' && status != 'no recent response' && status != 'no recent sale'){
 			imageButton.src = 'button_round_red.png';
 			errList.appendChild(divElement);
 			err += 1;
