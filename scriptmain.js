@@ -139,6 +139,13 @@ function changeReadTime(readtime){
 	})
 }
 
+function changeBackTime(backtime){
+	var url = "http://46.10.241.187:4040/api/machines/backtime/" + backtime;
+	$.get(url, function(data, status){
+		console.log('Data: ' + data + '; Status: ' + status)
+	})
+}
+
 
 function loadSearch(searchText){
 	var url = "http://46.10.241.187:4040/api/machines/search/" + searchText;
