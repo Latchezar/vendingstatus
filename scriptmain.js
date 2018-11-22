@@ -12,11 +12,15 @@ function showDetails(numberOfString) {
     	let mSum = 'Монетник: ' + parseFloat(machine.sum).toFixed(2);
     	let mBanknotes = 'Банкноти: ';
     	let mStatus = '';
-    	if (machine.status == 'good'){
+    	if (machineStatus == 'good'){
     		mStatus = 'Грешка: няма';
-    	} else {
-    		mStatus = 'Грешка: ' + machine.status;
-    	}
+    	} else if (machineStatus == 'no recent response') {
+			mStatus = 'Няма отговор от платката';
+		} else if (machineStatus == 'no recent sale') {
+			mStatus = 'Няма скорошна продажба';
+		} else {
+			mStatus = 'Грешка: ' + machine.status;
+		}
     	let mDor = 'Врата: ' + machine.ddor;
     	let mSell = 'Продажба ' + machine.dprd;
     	let mSellection = 'Селекция: ' + machine.but;
@@ -41,8 +45,11 @@ function showDetails(numberOfString) {
     	} else {
     		if (machineStatus == 'unknown'){
     			mImage.attr('src', './button_round_yellow.png');
-    		} else {
-    			mImage.attr('src', './button_round_red.png');
+			} else {
+				if (machineStatus == 'no recent response' || machineStatus == 'no recent sale') {
+					mImage.attr('src', './button_round_purple.png')
+				}
+				mImage.attr('src', './button_round_red.png');
     		}
     	}
 	}
@@ -102,7 +109,7 @@ function itterate(varriable){
 			unkwn += 1;
 			count += 1;
 		}
-		if (status == 'purple'){
+		if (status == 'no recent response' || status == 'no recent sale'){
 			imageButton.src = 'button_round_purple.png';
 			purpleList.appendChild(divElement);
 			prpl += 1;
