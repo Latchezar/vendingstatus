@@ -134,7 +134,7 @@ function loadAll(){
 
 function changeReadTime(readtime){
 	var url = "http://46.10.241.187:4040/api/machines/readtime/" + readtime;
-	$.get(url, requestBody, function(data, status){
+	$.get(url, function(data, status){
 		console.log('Data: ' + data + '; Status: ' + status)
 	})
 }
