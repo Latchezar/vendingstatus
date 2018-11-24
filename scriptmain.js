@@ -1,6 +1,6 @@
 function showDetails(numberOfString) {
 	var machine;
-	var url = "https://46.10.241.187:4040/api/machines/" + numberOfString;
+	var url = "http://46.10.241.187:4040/api/machines/" + numberOfString;
 	$.get(url, function(data){
 		machine = data;
 		let machineStatus = machine.status;
@@ -122,21 +122,21 @@ function itterate(varriable){
 };
 
 function loadAll(){
-	var url = "https://46.10.241.187:4040/api/machines";
+	var url = "http://46.10.241.187:4040/api/machines";
 	$.get(url, function(data){
 		itterate(data);
 	});
 }
 
 function changeReadTime(readtime){
-	var url = "https://46.10.241.187:4040/api/machines/readtime/" + readtime;
+	var url = "http://46.10.241.187:4040/api/machines/readtime/" + readtime;
 	$.get(url, function(data, status){
 		console.log('Data: ' + data + '; Status: ' + status)
 	});
 }
 
 function changeBackTime(backtime){
-	var url = "https://46.10.241.187:4040/api/machines/backtime/" + backtime;
+	var url = "http://46.10.241.187:4040/api/machines/backtime/" + backtime;
 	$.get(url, function(data, status){
 		console.log('Data: ' + data + '; Status: ' + status)
 	});
@@ -144,7 +144,7 @@ function changeBackTime(backtime){
 
 
 function loadSearch(searchText){
-	var url = "https://46.10.241.187:4040/api/machines/search/" + searchText;
+	var url = "http://46.10.241.187:4040/api/machines/search/" + searchText;
 	$.get(url, function(data){
 		itterate(data);
 	});
@@ -163,7 +163,7 @@ function searchClick(){
 }
 
 function getMachineById(id){
-	var url = "https://46.10.241.187:4040/api/machines/" + id;
+	var url = "http://46.10.241.187:4040/api/machines/" + id;
 	var result;
 	$.get(url, function(data){
 		result = data;
