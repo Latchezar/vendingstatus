@@ -165,7 +165,7 @@ function searchClick(){
 function getMachineById(id){
 	var url = "http://46.10.241.187:4040/api/machines/" + id;
 	var result;
-	$get(url, function(data){
+	$.get(url, function(data){
 		result = data;
 	});
 	return result;
