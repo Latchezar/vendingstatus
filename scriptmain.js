@@ -50,59 +50,6 @@ function showDetails(numberOfString) {
     		}
     	}
 	});
-	// var getMachine = new XMLHttpRequest();
-	// getMachine.open("GET", url, true);
-	// getMachine.responseType = 'json';
-	// getMachine.onload = function() {
-	// 	machine = getMachine.response;
-	// 	let machineStatus = machine.status;
-	// 	let mNumber = parseInt(machine.machineNumber) + ' обект, ' + machine.name;
-    // 	let mCNumber = parseInt(machine.circuitBoardNumber) + ' платка / сигнал: ' + machine.csq;
-    // 	let mSum = 'Монетник: ' + parseFloat(machine.sum).toFixed(2);
-    // 	let mBanknotes = 'Банкноти: ';
-    // 	let mStatus = '';
-    // 	if (machineStatus == 'good'){
-    // 		mStatus = 'Грешка: няма';
-    // 	} else if (machineStatus == 'no recent response') {
-	// 		mStatus = 'Няма отговор от платката';
-	// 	} else if (machineStatus == 'no recent sale') {
-	// 		mStatus = 'Няма скорошна продажба';
-	// 	} else {
-	// 		mStatus = 'Грешка: ' + machine.status;
-	// 	}
-    // 	let mDor = 'Врата: ' + machine.ddor;
-    // 	let mSell = 'Продажба ' + machine.dprd;
-    // 	let mSellection = 'Селекция: ' + machine.but;
-    // 	let mPrice = 'Цена: ' + machine.dcen;
-    // 	let mStatistic = 'Отчет: ' + machine.drep;
-    // 	let mFuvas = 'Фувас: ' + machine.fdin + '/' + machine.fmin;
-    // 	$("#mNumber").text(mNumber);
-    // 	$("#mCNumber").text(mCNumber);
-    // 	$("#mSum").text(mSum);
-    // 	$("#mBanknotes").text(mBanknotes);
-    // 	$("#mStatus").text(mStatus);
-    // 	$("#mDor").text(mDor);
-    // 	$("#mSell").text(mSell);
-    // 	$("#mSellection").text(mSellection);
-    // 	$("#mPrice").text(mPrice);
-    // 	$("#mStatistic").text(mStatistic);
-    // 	$("#mFuvas").text(mFuvas);
-    // 	$("#modal").css("display", "block");
-    // 	var mImage = $('#mImage');
-    // 	if (machineStatus == 'good'){
-    // 		mImage.attr('src', './button_round_green.png');
-    // 	} else {
-    // 		if (machineStatus == 'unknown'){
-    // 			mImage.attr('src', './button_round_yellow.png');
-	// 		} else {
-	// 			if (machineStatus == 'no recent response' || machineStatus == 'no recent sale') {
-	// 				mImage.attr('src', './button_round_purple.png')
-	// 			}
-	// 			mImage.attr('src', './button_round_red.png');
-    // 		}
-    // 	}
-	// }
-	// getMachine.send();
 }
 
 function itterate(varriable){
