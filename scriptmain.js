@@ -130,10 +130,10 @@ function loadAll(){
 	});
 }
 
-function loadAll(person){
+function loadPersonal(person){
 	var url = "http://46.10.241.187:4040/api/machines";
 	$.get(url, function(data){
-		itterate(data, person);
+		itteratePersonal(data, person);
 	});
 }
 
@@ -180,7 +180,7 @@ function getMachineById(id){
 	return result;
 }
 
-function itterate(varriable, person){
+function itteratePersonal(varriable, person){
 	var done = false;
 	var count = 0;
 	var err = 0;
