@@ -27,7 +27,7 @@ function showDetails(numberOfString) {
     	let mFuvas = 'Фувас: ' + machine.fdin + '/' + machine.fmin;
     	$("#mNumber").text(mNumber);
 		$("#mCNumber").text(mCNumber);
-		$("$mModDate").text(mModDate);
+		$("#mModDate").text(mModDate);
     	$("#mSum").text(mSum);
     	$("#mBanknotes").text(mBanknotes);
     	$("#mStatus").text(mStatus);
