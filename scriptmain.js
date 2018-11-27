@@ -5,7 +5,8 @@ function showDetails(numberOfString) {
 		machine = data;
 		let machineStatus = machine.status;
 		let mNumber = parseInt(machine.machineNumber) + ' обект, ' + machine.name;
-    	let mCNumber = parseInt(machine.circuitBoardNumber) + ' платка / сигнал: ' + machine.csq;
+		let mCNumber = parseInt(machine.circuitBoardNumber) + ' платка / сигнал: ' + machine.csq;
+		let mModDate = 'Актуално към: ' + machine.lastModified;
     	let mSum = 'Монетник: ' + parseFloat(machine.sum).toFixed(2);
     	let mBanknotes = 'Банкноти: ';
     	let mStatus = '';
@@ -25,7 +26,8 @@ function showDetails(numberOfString) {
     	let mStatistic = 'Отчет: ' + machine.drep;
     	let mFuvas = 'Фувас: ' + machine.fdin + '/' + machine.fmin;
     	$("#mNumber").text(mNumber);
-    	$("#mCNumber").text(mCNumber);
+		$("#mCNumber").text(mCNumber);
+		$("$mModDate").text(mModDate);
     	$("#mSum").text(mSum);
     	$("#mBanknotes").text(mBanknotes);
     	$("#mStatus").text(mStatus);
