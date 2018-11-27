@@ -12,7 +12,26 @@
 	</head>
 
 	<body>
+
 		<div class="container" id="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light navigation-line">
+				<span>Menu</span>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				</div>
+			</nav>
+			<div class="row navigation-line">
+				<div class="col-12">
+					<form class="form-inline my-2 my-lg-0 d-inline" onsubmit="event.preventDefault(); searchClick();">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box">
+						<button class="btn btn-outline-success my-2 my-sm-0" id="search-button" type="submit">Search</button>
+					</form>
+					<button class="btn btn-outline-success my-2 my-sm-0 d-inline" id="loadAll" onclick="loadAll();">Load All</button>
+				</div>
+			</div>
 			<div class="row" id="machineRow">
 			
 			</div>
@@ -32,6 +51,7 @@
 					</div>
 					<p id="mNumber"></p>
 					<p id="mCNumber"></p>
+					<p id="mModDate"></p>
 					<p id="mSum"></p>
 					<p id="mBanknotes"></p>
 					<p id="mStatus"></p>
@@ -55,81 +75,7 @@
 			</div>
 		</div>
 		<script>
-		    var done = false;
-			var count = 0;
-			var err = 0;
-			var gdd = 0;
-			var unkwn = 0;
-			var list = document.getElementById('machineRow');
-			var errList = document.createElement('div');
-			errList.setAttribute('id', 'errorList');
-			var okList = document.createElement('div');
-			okList.setAttribute('id', 'okList');
-			var unknownList = document.createElement('div');
-			unknownList.setAttribute('id', 'unknownList');
-			function itterate(varriable){
-				varriable.forEach(function(element) {
-				console.log(element.machineNumber + " " + element.name);
-				    var region = element.region;
-					var status = element.status;
-					var machineNumber = element.machineNumber;
-					var onClickData = 'showDetails(\'' + machineNumber + '\')';
-					var divElement = document.createElement('div');
-					var imageText = document.createElement('div');
-					imageText.classList.add('centered');
-					imageText.innerHTML = parseInt(machineNumber);
-					var imageButton = document.createElement('img');
-					imageButton.setAttribute('id', machineNumber);
-					imageButton.setAttribute('onclick', onClickData);
-					imageText.setAttribute('id', machineNumber);
-					imageText.setAttribute('onclick', onClickData);
-					divElement.setAttribute('id', machineNumber);
-					divElement.setAttribute('onclick', onClickData);
-					imageButton.classList.add('innerimage');
-					divElement.classList.add('col-1');
-					divElement.appendChild(imageButton);
-					divElement.appendChild(imageText);
-					if (region == '02' && status != 'good' && status != 'unknown'){
-						imageButton.src = 'button_round_red.png';
-						errList.appendChild(divElement);
-						err += 1;
-						count += 1;
-					}
-					if (region == '02' && status == 'good') {
-						imageButton.src = 'button_round_green.png';
-						okList.appendChild(divElement);
-						gdd += 1;
-						count += 1;
-					}
-					if (region == '02' && status == 'unknown'){
-						imageButton.src = 'button_round_yellow.png';
-						unknownList.appendChild(divElement);
-						unkwn += 1;
-						count += 1;
-					}
-				
-				});
-				var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML;
-				list.innerHTML = inHtml;
-				var unknownsP = document.getElementById('error');
-				unknownsP.innerHTML = 'Машини в грешка: ' + err;
-				var unknownsP = document.getElementById('good');
-				unknownsP.innerHTML = 'Машини без грешка: ' + gdd;
-				var unknownsP = document.getElementById('unknowns');
-				unknownsP.innerHTML = 'Машини без платка: ' + unkwn;
-				var counter = document.getElementById('machineCount');
-				counter.innerHTML = 'Брой Машини: ' + count;
-			};
-			var request = new XMLHttpRequest();
-			var jsonResponse;
-			request.open("GET", "http://46.10.241.187:4040/api/machines", true);
-			request.responseType = 'json';
-			request.onload = function() {
-				jsonResponse = request.response;
-				itterate(jsonResponse);
-			};
-			request.send();
-				
+			loadAll(2);
 			var span = document.getElementsByClassName("close")[0];
 			span.onclick = function() {
 				document.getElementById("modal").style.display = "none";
@@ -141,7 +87,6 @@
 			}
 		</script>
 	</body>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </html>

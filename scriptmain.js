@@ -130,6 +130,13 @@ function loadAll(){
 	});
 }
 
+function loadAll(person){
+	var url = "http://46.10.241.187:4040/api/machines";
+	$.get(url, function(data){
+		itterate(data, preson);
+	});
+}
+
 function changeReadTime(readtime){
 	var url = "http://46.10.241.187:4040/api/machines/readtime/" + readtime;
 	$.get(url, function(data, status){
@@ -172,3 +179,73 @@ function getMachineById(id){
 	});
 	return result;
 }
+
+function itterate(varriable, person){
+	var done = false;
+	var count = 0;
+	var err = 0;
+	var gdd = 0;
+	var unkwn = 0;
+	var prpl = 0;
+	var errList = document.createElement('div');
+	errList.setAttribute('id', 'errorList');
+	var okList = document.createElement('div');
+	okList.setAttribute('id', 'okList');
+	var unknownList = document.createElement('div');
+	unknownList.setAttribute('id', 'unknownList');
+	var purpleList = document.createElement('div');
+	purpleList.setAttribute('id', 'purpleList');
+	varriable.forEach(function(element) {
+		console.log(element.machineNumber + " " + element.name);
+		var region = element.region;
+		var status = element.status;
+		var machineNumber = element.machineNumber;
+		var onClickData = 'showDetails(\'' + machineNumber + '\')';
+		var divElement = document.createElement('div');
+		var imageText = document.createElement('div');
+		imageText.classList.add('centered');
+		imageText.innerHTML = parseInt(machineNumber);
+		var imageButton = document.createElement('img');
+		imageButton.setAttribute('id', machineNumber);
+		imageButton.setAttribute('onclick', onClickData);
+		imageText.setAttribute('id', machineNumber);
+		imageText.setAttribute('onclick', onClickData);
+		divElement.setAttribute('id', machineNumber);
+		divElement.setAttribute('onclick', onClickData);
+		imageButton.classList.add('innerimage');
+		divElement.classList.add('col-1');
+		divElement.appendChild(imageButton);
+		divElement.appendChild(imageText);
+		if (region == person && status != 'good' && status != 'unknown' && status != 'no recent response' && status != 'no recent sale'){
+			imageButton.src = 'button_round_red.png';
+			errList.appendChild(divElement);
+			err += 1;
+			count += 1;
+		}
+		if (region == person && status == 'good') {
+			imageButton.src = 'button_round_green.png';
+			okList.appendChild(divElement);
+			gdd += 1;
+			count += 1;
+		}
+		if (region == person && status == 'unknown'){
+			imageButton.src = 'button_round_yellow.png';
+			unknownList.appendChild(divElement);
+			unkwn += 1;
+			count += 1;
+		}
+		if (region == person && status == 'no recent response' || status == 'no recent sale'){
+			imageButton.src = 'button_round_purple.png';
+			purpleList.appendChild(divElement);
+			prpl += 1;
+			count += 1;
+		}
+	
+	});
+	var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML + purpleList.innerHTML;
+	$('#machineRow').html(inHtml);
+	$('#error').text('Машини в грешка: ' + err);
+	$('#good').text('Машини без грешка: ' + gdd);
+	$('#unknowns').text('Машини без платка: ' + unkwn);
+	$('#machineCount').text('Брой Машини: ' + count);
+};
