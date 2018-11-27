@@ -133,7 +133,7 @@ function loadAll(){
 function loadAll(person){
 	var url = "http://46.10.241.187:4040/api/machines";
 	$.get(url, function(data){
-		itterate(data, preson);
+		itterate(data, person);
 	});
 }
 
