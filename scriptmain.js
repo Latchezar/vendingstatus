@@ -159,6 +159,13 @@ function loadSearch(searchText){
 	});
 }
 
+function loadSearchPersonal(searchText, person){
+	var url = "http://46.10.241.187:4040/api/machines/search/" + searchText;
+	$.get(url, function(data){
+		itteratePersonal(data, person);
+	});
+}
+
 function clearButtons(){
 	var list = $('#machineRow');
 	list.innerHTML = "";
@@ -169,6 +176,13 @@ function searchClick(){
 	$("#search-box").val("");
 	clearButtons();
 	loadSearch(searchText);
+}
+
+function searchPersonal(person){
+	var searchText = $("#search-box").val();
+	$("#search-box").val("");
+	clearButtons();
+	loadSearchPersonal(searchText, person);
 }
 
 function getMachineById(id){
