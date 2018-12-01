@@ -159,11 +159,25 @@ function loadSearch(searchText){
 	});
 }
 
+function loadCircuit(searchText){
+	var url = "http://46.10.241.187:4040/api/machines/circuit/" + searchText;
+	$.get(url, function(data){
+		itterate(data);
+	});
+}
+
 function loadSearchPersonal(searchText, person){
 	var url = "http://46.10.241.187:4040/api/machines/search/" + searchText;
 	$.get(url, function(data){
 		itteratePersonal(data, person);
 	});
+}
+
+function searchCircuit(){
+	var circuitVal = $("#search-box-circuit").val();
+	$("#search-box-circuit").val("");
+	clearButtons();
+	loadCircuit(circuitVal);
 }
 
 function clearButtons(){
