@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="./mystyles.css" />
+		<title>Статус Вендинг машини</title>
+		<script scr="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="inscript.js"></script>
+	</head>
+
+	<body>
+
+		<div class="container" id="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light navigation-line">
+				<span>Menu</span>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				</div>
+			</nav>
+			<div class="row navigation-line">
+				<div class="col-6">
+					<p>Търсене:</p>
+					<form class="form-inline my-2 my-lg-0 d-inline" onsubmit="event.preventDefault(); searchClick();">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box">
+						<button class="btn btn-outline-success my-2 my-sm-0" id="search-button" type="submit">Search</button>
+					</form>
+					<button class="btn btn-outline-success my-2 my-sm-0 d-inline" id="loadAll" onclick="loadAll();">Load All</button>
+				</div>
+				<div class="col-6">
+					<p>Търсене по платка:</p>
+					<form class="form-inline my-2 my-lg-0 d-inline" onsubmit="event.preventDefault(); searchCircuit();">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box-circuit">
+						<button class="btn btn-outline-success my-2 my-sm-0" id="search-button" type="submit">Search Circuit</button>
+					</form>
+					<button class="btn btn-outline-success my-2 my-sm-0 d-inline" id="loadAll" onclick="loadAll();">Load All</button>
+				</div>
+			</div>
+			<div class="row" id="machineRow">
+			
+			</div>
+			<div class="details" id="modal">
+				<div class="modal-content">
+					<div class="row" style="margin-bottom:10px;">
+					    <div class="col-4">
+					        <img id="mImage" class="miniImage">
+					    </div>
+					    <div class="col-4">
+					        <button id="reset">Reset</button>
+					    </div>
+					    <div class="col-4">
+					        <span class="close">&times;</span>
+					        </div>
+						<img id="mImage">
+					</div>
+					<p id="mNumber"></p>
+					<p id="mCNumber"></p>
+					<p id="mModDate"></p>
+					<p id="mSum"></p>
+					<p id="mBanknotes"></p>
+					<p id="mStatus"></p>
+					<p id="mDor"></p>
+					<p id="mSell"></p>
+					<p id="mSellection"></p>
+					<p id="mPrice"></p>
+					<p id="mStatistic"></p>
+					<p id="mFuvas"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<p class="footertext" id="machineCount"></p>
+					<p class="footertext" id="error"></p>
+				</div>
+				<div class="col-6">
+					<p class="footertext" id="good"></p>
+					<p class="footertext" id="unknowns"></p>
+				</div>
+			</div>
+		</div>
+		<script>
+			loadAll();
+			var span = document.getElementsByClassName("close")[0];
+			span.onclick = function() {
+				document.getElementById("modal").style.display = "none";
+			}
+			window.onclick = function(event) {
+				if(event.target == document.getElementById("modal")){
+					document.getElementById("modal").style.display = "none";
+				}
+			}
+		</script>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</html>
+
