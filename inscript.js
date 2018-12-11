@@ -289,5 +289,6 @@ function secondLoad(){
 }
 
 function inLoad(){
+    loadAll();
     loading = setInterval(secondLoad, 30000);
 }
