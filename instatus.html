@@ -38,7 +38,7 @@
 						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box-circuit">
 						<button class="btn btn-outline-success my-2 my-sm-0" id="search-button" type="submit">Search Circuit</button>
 					</form>
-					<button class="btn btn-outline-success my-2 my-sm-0 d-inline" id="loadAll" onclick="loadAll();">Load All</button>
+					<button class="btn btn-outline-success my-2 my-sm-0 d-inline" id="loadAll" onclick="inLoad();">Load All</button>
 				</div>
 			</div>
 			<div class="row" id="machineRow">
@@ -84,7 +84,7 @@
 			</div>
 		</div>
 		<script>
-			loadAll();
+			inLoad();
 			var span = document.getElementsByClassName("close")[0];
 			span.onclick = function() {
 				document.getElementById("modal").style.display = "none";

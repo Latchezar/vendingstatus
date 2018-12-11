@@ -1,3 +1,5 @@
+var loading = 0;
+
 function showDetails(numberOfString) {
 	var machine;
 	var url = "http://192.168.1.3:4040/api/machines/" + numberOfString;
@@ -176,7 +178,8 @@ function loadSearchPersonal(searchText, person){
 function searchCircuit(){
 	var circuitVal = $("#search-box-circuit").val();
 	$("#search-box-circuit").val("");
-	clearButtons();
+    clearButtons();
+    clearInterval(loading);
 	loadCircuit(circuitVal);
 }
 
@@ -188,14 +191,16 @@ function clearButtons(){
 function searchClick(){
 	var searchText = $("#search-box").val();
 	$("#search-box").val("");
-	clearButtons();
+    clearButtons();
+    clearInterval(loading);
 	loadSearch(searchText);
 }
 
 function searchPersonal(person){
 	var searchText = $("#search-box").val();
 	$("#search-box").val("");
-	clearButtons();
+    clearButtons();
+    clearInterval(loading);
 	loadSearchPersonal(searchText, person);
 }
 
@@ -277,3 +282,12 @@ function itteratePersonal(varriable, person){
 	$('#unknowns').text('Машини без платка: ' + unkwn);
 	$('#machineCount').text('Брой Машини: ' + count);
 };
+
+function secondLoad(){
+    clearButtons();
+    loadAll();
+}
+
+function inLoad(){
+    loading = setInterval(secondLoad, 30000);
+}
