@@ -35,8 +35,8 @@ body {
 
 .col-1 {
 	padding: 0 0 0 0;
-    max-height: 100px;
-    max-width: 100px
+    max-height: 50px;
+    max-width: 50px
 }
 
 .details {
