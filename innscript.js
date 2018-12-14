@@ -2,7 +2,7 @@ var loading = 0;
 
 function showDetails(numberOfString) {
 	var machine;
-	var url = "http://192.168.1.2/api/machines/" + numberOfString;
+	var url = "http://192.168.1.2:8080/api/machines/" + numberOfString;
 	$.get(url, function(data){
 		machine = data;
 		let machineStatus = machine.status;
@@ -126,28 +126,28 @@ function itterate(varriable){
 };
 
 function loadAll(){
-	var url = "http://192.168.1.2/api/machines";
+	var url = "http://192.168.1.2:8080/api/machines";
 	$.get(url, function(data){
 		itterate(data);
 	});
 }
 
 function loadPersonal(person){
-	var url = "http://192.168.1.2/api/machines";
+	var url = "http://192.168.1.2:8080/api/machines";
 	$.get(url, function(data){
 		itteratePersonal(data, person);
 	});
 }
 
 function changeReadTime(readtime){
-	var url = "http://192.168.1.2/api/machines/readtime/" + readtime;
+	var url = "http://192.168.1.2:8080/api/machines/readtime/" + readtime;
 	$.get(url, function(data, status){
 		console.log('Data: ' + data + '; Status: ' + status)
 	});
 }
 
 function changeBackTime(backtime){
-	var url = "http://192.168.1.2/api/machines/backtime/" + backtime;
+	var url = "http://192.168.1.2:8080/api/machines/backtime/" + backtime;
 	$.get(url, function(data, status){
 		console.log('Data: ' + data + '; Status: ' + status)
 	});
@@ -155,21 +155,21 @@ function changeBackTime(backtime){
 
 
 function loadSearch(searchText){
-	var url = "http://192.168.1.2/api/machines/search/" + searchText;
+	var url = "http://192.168.1.2:8080/api/machines/search/" + searchText;
 	$.get(url, function(data){
 		itterate(data);
 	});
 }
 
 function loadCircuit(searchText){
-	var url = "http://192.168.1.2/api/machines/circuit/" + searchText;
+	var url = "http://192.168.1.2:8080/api/machines/circuit/" + searchText;
 	$.get(url, function(data){
 		itterate(data);
 	});
 }
 
 function loadSearchPersonal(searchText, person){
-	var url = "http://192.168.1.2/api/machines/search/" + searchText;
+	var url = "http://192.168.1.2:8080/api/machines/search/" + searchText;
 	$.get(url, function(data){
 		itteratePersonal(data, person);
 	});
@@ -205,7 +205,7 @@ function searchPersonal(person){
 }
 
 function getMachineById(id){
-	var url = "http://192.168.1.2/api/machines/" + id;
+	var url = "http://192.168.1.2:8080/api/machines/" + id;
 	var result;
 	$.get(url, function(data){
 		result = data;
