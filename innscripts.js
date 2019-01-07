@@ -56,13 +56,6 @@ function showDetails(numberOfString) {
 	});
 }
 
-function changeRedColor(element){
-	element.forEach(function(e){
-		e.classList.add('white-color');
-	});
-	return element;
-}
-
 function itterate(varriable){
 	var done = false;
 	var count = 0;
@@ -100,6 +93,7 @@ function itterate(varriable){
 		divElement.appendChild(imageText);
 		if (status != 'good' && status != 'unknown' && status != 'no recent response' && status != 'no recent sale'){
 			imageButton.src = 'button_round_red.png';
+			divElement.classList.add('white-color');
 			errList.appendChild(divElement);
 			err += 1;
 			count += 1;
@@ -123,7 +117,6 @@ function itterate(varriable){
 			count += 1;
 		}
 	});
-	errList = changeRedColor(errList);
 	var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML + purpleList.innerHTML;
 	$('#machineRow').html(inHtml);
 	$('#error').text('Машини в грешка: ' + err);
