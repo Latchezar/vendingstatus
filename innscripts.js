@@ -56,6 +56,13 @@ function showDetails(numberOfString) {
 	});
 }
 
+function changeRedColor(element){
+	element.forEach(function(e){
+		e.classList.add('white-color');
+	});
+	return element;
+}
+
 function itterate(varriable){
 	var done = false;
 	var count = 0;
@@ -115,8 +122,8 @@ function itterate(varriable){
 			prpl += 1;
 			count += 1;
 		}
-	
 	});
+	errList = changeRedColor(errList);
 	var inHtml = errList.innerHTML + okList.innerHTML + unknownList.innerHTML + purpleList.innerHTML;
 	$('#machineRow').html(inHtml);
 	$('#error').text('Машини в грешка: ' + err);

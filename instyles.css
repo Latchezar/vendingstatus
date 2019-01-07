@@ -11,6 +11,10 @@ body {
 	height: 100%;
 }
 
+.white-color {
+	color: #fff!important;
+}
+
 .footer {
 	width: 99%;
 	background-color: black;
